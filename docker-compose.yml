@@ -1,0 +1,26 @@
+version: '3'
+services:
+  mqtt_broker:
+    container_name: mqtt
+    image: eclipse-mosquitto
+    ports:
+      - '1883:1883/tcp'
+    restart: always
+    volumes:
+      - ./config:/config/
+      - ./data:/data
+      - ./log:/log
+  mqtt_subscriber:
+    build:
+      context: .
+      dockerfile: Dockerfile_mqtt
+    depends_on:
+      - mqtt_broker
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile_api
+    ports:
+      - '8000:8000'
+    depends_on:
+      - mqtt_subscriber
