@@ -1,3 +1,4 @@
+import datetime
 import time
 import json
 import logging
@@ -21,8 +22,8 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     try:
-        payload = json.loads(msg.payload.decode())
-        logger.info("Received MQTT message: %s", payload)
+        payload = json.loads(msg.payload.decode("utf-8"))
+        logger.info(f"Received MQTT message: {payload} at {datetime.datetime.now()}")
         # Save the message to the database
         save_message(payload)
     except Exception as e:

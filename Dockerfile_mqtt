@@ -6,6 +6,8 @@ COPY mqtt_subscriber.py .
 COPY database.py .
 COPY requirements.txt .
 
+EXPOSE 27018
+
 RUN pip3 install -r requirements.txt
 
 CMD ["python", "mqtt_subscriber.py"]

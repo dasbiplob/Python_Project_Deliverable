@@ -3,9 +3,9 @@ from fastapi import FastAPI
 import socket
 
 # MongoDB Configuration
-MONGO_HOST = '127.0.0.1'
+MONGO_HOST = 'mymongo'
 #MONGO_HOST = socket.gethostbyname('mongodb')
-MONGO_PORT = 27017
+MONGO_PORT = 27018
 MONGO_DB = 'mqttpy'
 MONGO_COLLECTION = 'mqttpy'
 #collection = db[MONGO_COLLECTION]
