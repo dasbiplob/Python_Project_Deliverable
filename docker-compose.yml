@@ -10,12 +10,17 @@ services:
       - ./config:/config/
       - ./data:/data
       - ./log:/log
+  mongosh:
+    image: mongo
+    ports:
+      - '27017:27017'    
   mqtt_subscriber:
     build:
       context: .
       dockerfile: Dockerfile_mqtt
     depends_on:
       - mqtt_broker
+      - mongosh
   api:
     build:
       context: .

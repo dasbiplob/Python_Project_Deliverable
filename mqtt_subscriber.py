@@ -2,7 +2,7 @@ import time
 import json
 import logging
 import paho.mqtt.client as mqtt
-import database
+from database import save_message
 
 
 # MQTT Broker Configuration
@@ -23,8 +23,8 @@ def on_message(client, userdata, msg):
     try:
         payload = json.loads(msg.payload.decode())
         logger.info("Received MQTT message: %s", payload)
-        # Save the message to the database (to be implemented later)
-        database.save_message(payload)
+        # Save the message to the database
+        save_message(payload)
     except Exception as e:
         logger.error("Error processing MQTT message: %s", str(e))
 

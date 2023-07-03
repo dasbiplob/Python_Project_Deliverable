@@ -25,7 +25,7 @@ except Exception as e:
 def get_messages():
     try:
             messages = list(collection.find())
-            
+            print("The value of messages" + messages)
             for message in messages:
              message["_id"] = str(message["_id"])
             return {"messages": messages}
