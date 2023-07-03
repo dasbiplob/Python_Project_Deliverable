@@ -1,4 +1,6 @@
 version: '3'
+networks:
+  my_network:
 services:
   mqtt_broker:
     container_name: mqtt
@@ -10,22 +12,29 @@ services:
       - ./config:/config/
       - ./data:/data
       - ./log:/log
-  mongosh:
-    image: mongo
+  mongo-db:
+    image: mongo:latest
+    container_name: mongodb
     ports:
-      - '27017:27017'    
+      - '27017:27017'
+    networks:
+      - my_network      
   mqtt_subscriber:
     build:
       context: .
       dockerfile: Dockerfile_mqtt
     depends_on:
       - mqtt_broker
-      - mongosh
+      - mongo-db
   api:
     build:
       context: .
       dockerfile: Dockerfile_api
     ports:
       - '8000:8000'
+    environment:
+      - MQTT_BROKER_HOST=mqtt-broker  
     depends_on:
       - mqtt_subscriber
+    networks:
+      - my_network  

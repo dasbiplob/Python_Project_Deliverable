@@ -2,7 +2,7 @@ import json
 from pymongo import MongoClient
 
 # MongoDB Configuration
-MONGO_HOST = '127.0.0.1'
+MONGO_HOST = '172.23.0.2'
 #MONGO_HOST = 'mongodb'
 MONGO_PORT = 27017
 MONGO_DB = 'mqttpy'
