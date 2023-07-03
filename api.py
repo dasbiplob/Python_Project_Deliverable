@@ -1,9 +1,10 @@
 from pymongo import MongoClient
 from fastapi import FastAPI
-import time
+import socket
 
 # MongoDB Configuration
-MONGO_HOST = '172.23.0.2'
+MONGO_HOST = '127.0.0.1'
+#MONGO_HOST = socket.gethostbyname('mongodb')
 MONGO_PORT = 27017
 MONGO_DB = 'mqttpy'
 MONGO_COLLECTION = 'mqttpy'
@@ -21,8 +22,6 @@ while True:
         break  # Break out of the loop if the connection is successful
     except Exception as e:
         print(f"Error connecting to MongoDB: {str(e)}")
-        print("Retrying in 5 seconds...")
-        time.sleep(5)  # Wait for 5 seconds before retrying
 
 # API endpoint to retrieve all messages
 @app.get('/messages')

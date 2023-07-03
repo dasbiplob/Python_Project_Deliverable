@@ -1,9 +1,10 @@
 import json
 from pymongo import MongoClient
+import socket
 
 # MongoDB Configuration
-MONGO_HOST = '172.23.0.2'
-#MONGO_HOST = 'mongodb'
+MONGO_HOST = '127.0.0.1'
+#MONGO_HOST = socket.gethostbyname('mongodb')
 MONGO_PORT = 27017
 MONGO_DB = 'mqttpy'
 MONGO_COLLECTION = 'mqttpy'
