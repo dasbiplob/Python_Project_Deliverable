@@ -3,7 +3,7 @@ This repository contains two containerized applications: MQTT Subscriber and API
 # Prerequisites
 Docker installed on your machine
 # Setup Env:
-# Clone the repository:
+##Clone the repository:
 git clone <repository-url>
 # Navigate to the project directory:
 1.cd <project-directory>
