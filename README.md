@@ -3,10 +3,10 @@ This repository contains two containerized applications: MQTT Subscriber and API
 # Prerequisites
 Docker installed on your machine
 # Setup Env:
-Clone the repository:
+# Clone the repository:
 git clone <repository-url>
-Navigate to the project directory:
-cd <project-directory>
-virtualenv venv
-source <project-directory>/venv/bin/activate
-docker-compose up --build
+# Navigate to the project directory:
+1.cd <project-directory>
+2.virtualenv venv
+3.source <project-directory>/venv/bin/activate
+4.docker-compose up --build
